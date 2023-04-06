@@ -1,0 +1,25 @@
+# This represents an outline of the docker-compose.yml file that you will need to create in order to run the application. You will need to fill in the blanks with the correct information.
+version: "3"
+
+services:
+  app:
+    container_name: ReactAPP
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URI=<mongodb+srv://larissacooper10:test123@cluster0.xjjuwls.mongodb.net/test>
+
+    depends_on:
+      - db
+
+  db:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_DATABASE=MernDB
+      - MONGO_INITDB_ROOT_USERNAME=<larissacooper10>
+      - MONGO_INITDB_ROOT_PASSWORD=<test123>
+    ports:
+      - "27017:27017"
